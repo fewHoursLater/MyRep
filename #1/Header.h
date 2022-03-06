@@ -2,8 +2,9 @@
 
 #include <iostream>
 #include <string>
-#include <fstream>
 #include <vector>
-#include <typeinfo>
+#include <fstream>
+#include <stdio.h>
+#include <sstream>
 
 using namespace std;

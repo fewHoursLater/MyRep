@@ -4,8 +4,8 @@ project(Printer)
 
 #aux_source_directory(. SRC_LIST)
 
-set(Printer_SRC main.cpp CIntN.cpp CData1.cpp CData0.cpp Autotests.cpp)
-set(Printer_HDR Header.h CIntN.h CData.h CData0.h CData1.h Autotests.h)
+set(Printer_SRC main.cpp CIntN.cpp CIntN_Vert.cpp CIntN_Hori.cpp Autotests.cpp)
+set(Printer_HDR Header.h CIntN.h CIntN_Vert.h CIntN_Hori.h Autotests.h)
 
 add_executable(${PROJECT_NAME} ${Printer_SRC} ${Printer_HDR})
 

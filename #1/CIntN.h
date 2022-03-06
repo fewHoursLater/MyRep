@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Header.h"
-
 class CIntN
 {
-private:
+protected:
 
 	int* arr = nullptr;
-	int power;
+	string filename;
+	int size;
 
 public:
 
@@ -15,22 +14,20 @@ public:
 
 	CIntN(int);
 
-	CIntN(vector<int>);
+	CIntN(string filename, vector<int> elements);
 
-	~CIntN(void);
+	virtual ~CIntN();
 
 	CIntN(const CIntN&);
 
 	CIntN& operator=(const CIntN&);
 
-	CIntN operator+(const CIntN&);
-
-	CIntN operator-(const CIntN&);
-
 	int& operator[](int);
 
-	void print();
+	virtual void print(const string filename) = 0;
 
-	int get_power();
+	int get_size();
+
+	string get_filename(void);
 
 };

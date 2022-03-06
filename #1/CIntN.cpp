@@ -3,69 +3,71 @@
 
 CIntN::CIntN()
 {
-	this->power = 1;
-	arr = new int[this->power];
+	this->size = 1;
+	arr = new int[this->size];
 	arr[0] = 0;
 }
 
-CIntN::CIntN(int power)
+CIntN::CIntN(int size)
 {
-	this->power = power;
-	arr = new int[power];
+	this->size = size;
+	arr = new int[size];
 
-	for (int a = 0; a < power; a++)
+	for (int a = 0; a < size; a++)
 	{
-		arr[a] = 2;
+		arr[a] = 0;
 	}
 }
 
-CIntN::CIntN(vector<int> line)
+CIntN::CIntN(string filename, vector<int> elements)
 {
+	this->filename = filename;
 
-	this->power = line.size();
+	this->size = elements.size();
 
-	arr = new int[power];
+	arr = new int[size];
 
-	for (int a = 0; a < power; a++)
+	for (int a = 0; a < size; a++)
 	{
-		arr[a] = line[a];
+		arr[a] = elements[a];
 	}
 }
 
 CIntN::~CIntN()
 {
+	size = 0;
 	delete[] this->arr;
 }
 
-CIntN::CIntN(const CIntN& x) // Конструктор копирования
+CIntN::CIntN(const CIntN& x)
 {
-	this->power = x.power;
+	this->size = x.size;
 
 	if (this->arr != nullptr)
 	{
 		delete[] this->arr;
 	}
 
-	this->arr = new int[this->power];
+	this->arr = new int[this->size];
 
-	for (int a = 0; a < this->power; a++)
+	for (int a = 0; a < this->size; a++)
 	{
 		this->arr[a] = x.arr[a];
 	}
 }
 
-CIntN& CIntN::operator=(const CIntN& x) //Конструктор присваивания копированием
+CIntN& CIntN::operator=(const CIntN& x)
 {
-	this->power = x.power;
+	this->size = x.size;
 
 	if (this->arr != nullptr)
 	{
 		delete[] this->arr;
 	}
 
-	this->arr = new int[x.power];
+	this->arr = new int[x.size];
 
-	for (int a = 0; a < this->power; a++)
+	for (int a = 0; a < this->size; a++)
 	{
 		this->arr[a] = x.arr[a];
 	}
@@ -73,53 +75,17 @@ CIntN& CIntN::operator=(const CIntN& x) //Конструктор присваивания копированием
 	return *this;
 }
 
-CIntN CIntN::operator+(const CIntN& other)
-{
-	if (this->power == other.power)
-	{
-		CIntN rez(this->power);
-
-		for (int b = 0; b < this->power; b++)
-		{
-			rez[b] = this->arr[b] + other.arr[b];
-		}
-
-		return rez;
-	}
-}
-
-CIntN CIntN::operator-(const CIntN& other)
-{
-	if (this->power == other.power)
-	{
-		CIntN rez(this->power);
-
-		for (int b = 0; b < this->power; b++)
-		{
-			rez[b] = this->arr[b] - other.arr[b];
-		}
-
-		return rez;
-	}
-}
-
 int& CIntN::operator[](int index)
 {
 	return arr[index];
 }
 
-
-void CIntN::print()
+int CIntN::get_size()
 {
-	for (int a = 0; a < power; a++)
-	{
-		cout << this->arr[a] << " ";
-	}
-
-	cout << endl << endl;
+	return size;
 }
 
-int CIntN::get_power()
+string CIntN::get_filename(void)
 {
-	return power;
+	return filename;
 }

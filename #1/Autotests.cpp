@@ -1,21 +1,23 @@
 #include "Header.h"
 #include "Autotests.h"
-#include "CData.h"
-#include "CData0.h"
-#include "CData1.h"
+#include "CIntN.h"
+#include "CIntN_Hori.h"
+#include "CIntN_Vert.h"
 
-int Test1(void)
+int Auto_test1(void)
 {
+
 	int buf;
 
 	vector<int> test_data = { 1,2,3,4,5,6,7,8,9 };
-	string test_file_name = "test1.txt";
 
-	CData0 alpha(test_file_name, test_data);
+	string name_test = "test1.txt";
 
-	alpha.output(alpha.get_name());
+	CIntN_Hori alpha(name_test, test_data);
 
-	ifstream read_test_file(test_file_name);
+	alpha.print(alpha.get_filename());
+
+	ifstream read_test_file(name_test);
 
 	if (!read_test_file.is_open())
 	{
@@ -34,19 +36,27 @@ int Test1(void)
 
 	read_test_file.close();
 
+	if (remove("test1.txt"))
+	{
+		return 0;
+	}
+
 	return 1;
+
 }
 
-int Test2(void)
+int Auto_test2(void)
 {
+
 	int buf;
 
 	vector<int> test_data = { 9,8,7,6,5,4,3,2,1 };
+
 	string test_file_name = "test2.txt";
 
-	CData1 alpha(test_file_name, test_data);
+	CIntN_Vert alpha(test_file_name, test_data);
 
-	alpha.output(alpha.get_name());
+	alpha.print(alpha.get_filename());
 
 	ifstream read_test_file(test_file_name);
 
@@ -67,12 +77,18 @@ int Test2(void)
 
 	read_test_file.close();
 
+	if (remove("test2.txt"))
+	{
+		return 0;
+	}
+
 	return 1;
+
 }
 
 int Core_test(void)
 {
-	if (Test1() * Test2() == 1)
+	if (Auto_test1() * Auto_test2())
 	{
 		return 1;
 	}
