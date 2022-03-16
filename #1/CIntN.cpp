@@ -19,11 +19,20 @@ CIntN::CIntN(int size)
 	}
 }
 
+CIntN::CIntN(string filename)
+{
+	this->filename = filename;
+}
+
 CIntN::CIntN(string filename, vector<int> elements)
 {
 	this->filename = filename;
 
 	this->size = elements.size();
+
+	ofstream file;
+	file.open(filename, ios_base::trunc);
+	file.close();
 
 	arr = new int[size];
 

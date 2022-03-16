@@ -7,6 +7,7 @@ protected:
 	int* arr = nullptr;
 	string filename;
 	int size;
+	
 
 public:
 
@@ -14,7 +15,9 @@ public:
 
 	CIntN(int);
 
-	CIntN(string filename, vector<int> elements);
+	CIntN(string);
+
+	CIntN(string, vector<int>);
 
 	virtual ~CIntN();
 
@@ -24,7 +27,7 @@ public:
 
 	int& operator[](int);
 
-	virtual void print(const string filename) = 0;
+	virtual void print(const string) = 0;
 
 	int get_size();
 

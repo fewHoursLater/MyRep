@@ -131,35 +131,3 @@ int main()
 		return 1;
 	}	
 }
-
-
-
-//CIntN operator+(const CIntN& other)
-//{
-//	if (this->size == other.size)
-//	{
-//		CIntN rez(this->size);
-//
-//		for (int b = 0; b < this->size; b++)
-//		{
-//			rez[b] = this->arr[b] + other.arr[b];
-//		}
-//
-//		return rez;
-//	}
-//}
-//
-//CIntN operator-(const CIntN& other)
-//{
-//	if (this->size == other.size)
-//	{
-//		CIntN rez(this->size);
-//
-//		for (int b = 0; b < this->size; b++)
-//		{
-//			rez[b] = this->arr[b] - other.arr[b];
-//		}
-//
-//		return rez;
-//	}
-//}
