@@ -17,11 +17,26 @@ CIntN::CIntN(int size)
 	}
 }
 
+CIntN::CIntN(string filename)
+{
+	this->filename = filename;
+}
+
 CIntN::CIntN(int size, const string filename)
 {
 	this->size = size;
-	
+
 	this->filename = filename;
+
+	ofstream file;
+	file.open(filename, ios_base::trunc);
+
+	if (!file.is_open())
+	{
+		throw std::runtime_error("Failed to open file.\n");
+	}
+
+	file.close();
 
 	for (unsigned int i = 0; i < size; i++)
 	{
@@ -35,6 +50,16 @@ CIntN::CIntN(string filename, vector<int> elements)
 	this->filename = filename;
 
 	this->size = elements.size();
+
+	ofstream file;
+	file.open(filename, ios_base::trunc);
+
+	if (!file.is_open())
+	{
+		throw std::runtime_error("Failed to open file.\n");
+	}
+
+	file.close();
 
 	for (const auto i : elements)
 	{

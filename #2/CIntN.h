@@ -7,7 +7,7 @@ protected:
 	vector<int> arr;
 
 	string filename;
-	
+
 	int size;
 
 public:
@@ -15,6 +15,8 @@ public:
 	CIntN();
 
 	CIntN(int);
+
+	CIntN(string);
 
 	CIntN(int, const string);
 

@@ -4,14 +4,24 @@
 
 CIntN_Vert::~CIntN_Vert() {}
 
-void CIntN_Vert::print(const string filename) 
+void CIntN_Vert::print(const string filename)
 {
-	ofstream file(filename);
+	ofstream file;
 
-	for (const auto i : arr)
+	file.open(filename, std::ios::app);
+
+	if (!file.is_open())
+	{
+		throw std::runtime_error("Failed to open file.\n");
+	}
+
+	for (const auto i : this->arr) 
 	{
 		file << i << '\n';
 	}
+
+	file << endl << endl;
+
+	file.close();
+
 }
-
-

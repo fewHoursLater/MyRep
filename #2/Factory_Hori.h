@@ -11,7 +11,7 @@ class Factory_Hori : public Factory
 public:
     virtual shared_ptr<CIntN> Create(int size, const string filename) const override
     {
-        return make_shared<CIntN_Hori>(size, filename); 
+        return make_shared<CIntN_Hori>(size, filename);
     }
 
     Factory_Hori() = default;
