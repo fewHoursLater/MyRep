@@ -19,13 +19,13 @@ int main()
 	{
 		try
 		{
-			map<string, unique_ptr<Factory>> Factory_Map;
+			map<string, Factory*> Factory_Map;
 
-			Factory_Map["hori"] = unique_ptr<Factory>(new Factory_Hori);
+			Factory_Map["hori"] = new Factory_Hori;
 
-			Factory_Map["vert"] = unique_ptr<Factory>(new Factory_Vert);
+			Factory_Map["vert"] = new Factory_Vert;
 
-			vector<shared_ptr<CIntN>> storage;
+			vector<CIntN*> storage;
 
 			int cnt = 0;
 

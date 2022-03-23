@@ -9,9 +9,9 @@
 class Factory_Vert : public Factory
 {
 public:
-    virtual shared_ptr<CIntN> Create(int size, const string filename) const override
+    virtual CIntN* Create(int size, const string filename) const override
     {
-        return std::make_shared<CIntN_Vert>(size, filename);
+        return new CIntN_Vert(size, filename);
     }
 
     Factory_Vert() = default;

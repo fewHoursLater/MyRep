@@ -6,7 +6,7 @@
 class Factory
 {
 public:
-    virtual shared_ptr<CIntN> Create(const int size, const string filename) const = 0;
+    virtual CIntN* Create(const int size, const string filename) const = 0;
 
     Factory() = default;
 
