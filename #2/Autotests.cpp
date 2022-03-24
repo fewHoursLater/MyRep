@@ -9,17 +9,26 @@ int Auto_test1(void)
 
 	int buf;
 
+	char sign = '#';
+
 	vector<int> test_data = { 1,2,3,4,5,6,7,8,9 };
 
 	string name_test = "test1.txt";
 
-	CIntN_Hori alpha(name_test, test_data);
+	CIntN_Hori alpha(9,name_test, test_data,'+');
 
 	alpha.print(alpha.get_filename());
 
 	ifstream read_test_file(name_test);
 
 	if (!read_test_file.is_open())
+	{
+		return 0;
+	}
+
+	read_test_file >> sign;
+
+	if (sign != '+')
 	{
 		return 0;
 	}
@@ -50,17 +59,26 @@ int Auto_test2(void)
 
 	int buf;
 
+	char sign = '#';
+
 	vector<int> test_data = { 9,8,7,6,5,4,3,2,1 };
 
 	string test_file_name = "test2.txt";
 
-	CIntN_Vert alpha(test_file_name, test_data);
+	CIntN_Vert alpha(9,test_file_name, test_data,'+');
 
 	alpha.print(alpha.get_filename());
 
 	ifstream read_test_file(test_file_name);
 
 	if (!read_test_file.is_open())
+	{
+		return 0;
+	}
+
+	read_test_file >> sign;
+
+	if (sign != '-')
 	{
 		return 0;
 	}

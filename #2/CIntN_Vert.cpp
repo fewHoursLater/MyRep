@@ -15,7 +15,9 @@ void CIntN_Vert::print(const string filename)
 		throw std::runtime_error("Failed to open file.\n");
 	}
 
-	for (const auto i : this->arr) 
+	file << this->sign;
+
+	for (const auto i : this->arr)
 	{
 		file << i << '\n';
 	}

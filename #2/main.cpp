@@ -15,6 +15,34 @@
 
 int main()
 {
+	/*try
+	{
+		string name1 = "1.txt";
+		string name2 = "2.txt";
+		vector<int> vec1 = { 3,3,3 };
+		vector<int> vec2 = { 7,4,4 };
+
+		CIntN_Hori aa(3,name1, vec1,'+');
+		CIntN_Hori bb(3,name2, vec2,'+');
+
+
+		cout << aa.get_filename() << endl;
+		cout << bb.get_filename() << endl;
+
+
+		CIntN_Hori cc = aa + bb;
+
+		cout << cc.get_filename();
+
+		cc.print(cc.get_filename());
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << endl;
+		return 1;
+	}
+	*/
+
 	if (Core_test())
 	{
 		try
@@ -83,13 +111,28 @@ int main()
 
 				strStream >> filename;
 
+				char sign;
+
+				strStream >> sign;
+
 				int element;
 
 				vector<int> elements;
 
+				if (sign == '0')
+				{
+					sign = '#';
+					elements.push_back(0);
+				}				
+
 				while (strStream >> element)
 				{
 					elements.push_back(element);
+				}
+
+				if (elements.size() > 1 && elements[0] == 0)
+				{
+					throw std::runtime_error("The file contains a number of the wrong dimension.\n");
 				}
 
 				auto cur_Factory = Factory_Map.find(type);
@@ -101,7 +144,7 @@ int main()
 					throw std::runtime_error("Incorrect parameters of printing.\n");
 				}
 
-				auto cur_Vect = cur_Factory->second->Create(static_cast<int>(elements.size()), filename);
+				auto cur_Vect = cur_Factory->second->Create(static_cast<int>(elements.size()), filename, sign);
 
 				unsigned int i = 0;
 
@@ -133,11 +176,11 @@ int main()
 			std::cerr << e.what() << endl;
 			return 1;
 		}
-		
+
 	}
 	else
 	{
-	std::cout << "Autotests failed." << endl;
+		std::cout << "Autotests failed." << endl;
 		return 1;
 	}
 }

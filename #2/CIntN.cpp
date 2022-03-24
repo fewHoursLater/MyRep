@@ -1,15 +1,20 @@
 #include "Header.h"
 #include "CIntN.h"
 
-CIntN::CIntN()
+CIntN::CIntN(void)
 {
 	this->size = 1;
+
+	this->sign = '#';
+	
 	arr.push_back(0);
 }
 
-CIntN::CIntN(int size)
+CIntN::CIntN(const int size)
 {
 	this->size = size;
+	
+	this->sign = '#';
 
 	for (int a = 0; a < size; a++)
 	{
@@ -17,16 +22,13 @@ CIntN::CIntN(int size)
 	}
 }
 
-CIntN::CIntN(string filename)
-{
-	this->filename = filename;
-}
-
-CIntN::CIntN(int size, const string filename)
+CIntN::CIntN(const int size, const string filname, const char sign)
 {
 	this->size = size;
 
 	this->filename = filename;
+
+	this->sign = sign;
 
 	ofstream file;
 	file.open(filename, ios_base::trunc);
@@ -45,11 +47,13 @@ CIntN::CIntN(int size, const string filename)
 
 }
 
-CIntN::CIntN(string filename, vector<int> elements)
+CIntN::CIntN(const int size, const string filename, const vector<int> elements, const char sign)
 {
+	this->size = elements.size();
+
 	this->filename = filename;
 
-	this->size = elements.size();
+	this->sign = sign;
 
 	ofstream file;
 	file.open(filename, ios_base::trunc);
@@ -70,35 +74,48 @@ CIntN::CIntN(string filename, vector<int> elements)
 CIntN::~CIntN()
 {
 	size = 0;
-
 	arr.clear();
 }
 
-CIntN::CIntN(const CIntN& x)
+CIntN::CIntN(const CIntN& other)
 {
-	this->size = x.size;
+	this->arr.clear();
 
-	if (!arr.empty())
-	{
-		arr.clear();
-	}
+	this->size = other.size;
+	
+	this->filename = other.filename;
 
-	for (const auto i : x.arr)
-	{
-		arr.push_back(i);
-	}
-}
+	this->sign = other.sign;
 
-CIntN& CIntN::operator=(const CIntN& x)
-{
-	this->size = x.size;
 
 	if (!this->arr.empty())
 	{
 		this->arr.clear();
 	}
 
-	for (const auto i : x.arr)
+	for (const auto i : other.arr)
+	{
+		arr.push_back(i);
+	}
+}
+
+CIntN& CIntN::operator=(const CIntN& other)
+{
+
+	this->arr.clear();
+
+	this->size = other.size;
+
+	this->filename = other.filename;
+	
+	this->sign = other.sign;
+
+	if (!this->arr.empty())
+	{
+		this->arr.clear();
+	}
+
+	for (const auto i : other.arr)
 	{
 		this->arr.push_back(i);
 	}
@@ -114,7 +131,7 @@ int& CIntN::operator[](int index)
 	}
 }
 
-int CIntN::get_size()
+int CIntN::get_size(void)
 {
 	return size;
 }
@@ -122,4 +139,9 @@ int CIntN::get_size()
 string CIntN::get_filename(void)
 {
 	return filename;
+}
+
+char CIntN::get_sign(void)
+{
+	return sign;
 }

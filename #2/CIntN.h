@@ -4,23 +4,21 @@ class CIntN
 {
 protected:
 
-	vector<int> arr;
-
-	string filename;
-
 	int size;
+	string filename;
+	vector<int> arr;	
+	char sign = '#';
 
 public:
 
-	CIntN();
+	CIntN(void); 
 
-	CIntN(int);
+	CIntN(const int); 
 
-	CIntN(string);
+	CIntN(const int, const string, const char); 
 
-	CIntN(int, const string);
+	CIntN(const int, const string, const vector<int>, const char); 
 
-	CIntN(string filename, vector<int> elements);
 
 	virtual ~CIntN();
 
@@ -30,10 +28,12 @@ public:
 
 	int& operator[](int);
 
-	virtual void print(const string filename) = 0;
+	virtual void print(const string) = 0;
 
-	int get_size();
+	int get_size(void);
 
 	string get_filename(void);
+
+	char get_sign(void);
 
 };

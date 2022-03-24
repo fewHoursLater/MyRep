@@ -9,9 +9,9 @@
 class Factory_Hori : public Factory
 {
 public:
-    virtual CIntN* Create(int size, const string filename) const override
+    virtual CIntN* Create(int size, const string filename, const char sign) const override
     {
-        return new CIntN_Hori(size, filename);
+        return new CIntN_Hori(size, filename, sign);
     }
 
     Factory_Hori() = default;
